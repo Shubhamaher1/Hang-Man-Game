@@ -8,6 +8,7 @@ const wrongchar=[];
 const bodypart= document.querySelectorAll("#figure-part");
 console.log(bodypart);
 let k=0;
+let win=0;
 
 function showchar(){
     document.getElementById("word-dash").innerHTML = `
@@ -41,6 +42,7 @@ function showbody(){
         
         if(start){
             document.location.reload(true);
+            k=0;
         }else{
             const thanks=document.createElement("h1");
             thanks.innerHTML="Thanks For Playing";
@@ -64,8 +66,12 @@ window.addEventListener("keydown",(e)=>{
             if(rendomWord.includes(e.key) && k<=bodypart.length){
                 // correct 
                 rightcarecter.push(e.key);
+                for(let i=0;i<rendomWord.length;i++){
+                    if(e.key==rendomWord[i])win++;
+                }
+              
                 showchar();
-                if(rightcarecter.length>=lengthword){
+                if(win>=lengthword){
                     const play = confirm(`Won1......... Do You Want To Play Again !`);
                     if(play){
                         document.location.reload(true);
