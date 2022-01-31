@@ -1,17 +1,28 @@
+// RandomWord we can fatch any Site
 const words = ["facebook", "instagram", "apple", "name", "youtube","app","nikita","code","quiz","white","attat"];
 
+//chosseing random word from array
 const rendomWord = words[Math.floor(Math.random() * words.length)];
 const lengthword=rendomWord.length;
 const visited=[];
+//for checking repress or displaying 
 const rightcarecter=[];
+
+// for displayig body of hang man
+
 const wrongchar=[];
 const bodypart= document.querySelectorAll("#figure-part");
 console.log(bodypart);
+// for woring gusse counting
 let k=0;
+
+// for checking right choising  for double of many more placese present 
 let win=0;
 
+//displaying word 
 function showchar(){
     document.getElementById("word-dash").innerHTML = `
+    
     ${rendomWord.split("").map((letter)=> 
     `<span class="Letter">
         ${rightcarecter.includes(letter) ? letter:"_"}
@@ -22,6 +33,7 @@ function showchar(){
 `;
 }
 showchar();
+//for showing choising wrong word
 function udatecorrectchar(){
     document.getElementById("worng-char-block").innerHTML=`
     <p>Worng char press</p>
@@ -83,9 +95,11 @@ window.addEventListener("keydown",(e)=>{
                     }
                     
                 }
+
             }else{
                 wrongchar.push(e.key);
                showbody();
+               udatecorrectchar();
                 // display body
             }
             console.log(visited);
